@@ -1,12 +1,14 @@
 import java.util.Scanner;
 
-public class Main {
+public class Main 
+{
     // Global variable (bisa diakses semua method)
     static Scanner input = new Scanner(System.in);
     static Menu[] menu;
     
-    public static void main(String[] args) {
-        // FLOW PROGRAM (mudah dibaca, ringkas)
+    public static void main(String[] args) 
+    {
+        // Persiapan data menu
         arrayMenu();
         displayMenuHeader();
         
@@ -33,26 +35,29 @@ public class Main {
     }
     
     // ===== METHOD 1: ARRAY MENU =====
-    static void arrayMenu() {
+    static void arrayMenu() 
+    {
         menu = new Menu[8];
-        menu[0] = new Menu("Nasi Padang", 25000, "makanan");
-        menu[1] = new Menu("Ayam Bakar", 30000, "makanan");
+        menu[0] = new Menu("Nasi Padang ", 25000, "makanan");
+        menu[1] = new Menu("Ayam Bakar  ", 30000, "makanan");
         menu[2] = new Menu("Sate Kambing", 45000, "makanan");
-        menu[3] = new Menu("Gado-Gado", 20000, "makanan");
+        menu[3] = new Menu("Gado-Gado   ", 20000, "makanan");
         menu[4] = new Menu("Es Teh Manis", 5000, "minuman");
-        menu[5] = new Menu("Jus Jeruk", 12000, "minuman");
-        menu[6] = new Menu("Kopi Susu", 15000, "minuman");
-        menu[7] = new Menu("Air Mineral", 4000, "minuman");
+        menu[5] = new Menu("Jus Jeruk   ", 12000, "minuman");
+        menu[6] = new Menu("Kopi Susu   ", 15000, "minuman");
+        menu[7] = new Menu("Air Mineral ", 4000, "minuman");
     }
     
     // ===== METHOD 2: TAMPILKAN HEADER =====
-    static void displayMenuHeader() {
+    static void displayMenuHeader() 
+    {
         System.out.println("======= RESTO JAVA - MENU =======");
         
     }
     
     // ===== METHOD 3: INPUT MAKANAN =====
-    static int[] inputMakanan() {
+    static int[] inputMakanan() 
+    {
         System.out.println("[ MAKANAN ]");
         System.out.println("1. Nasi Padang (25rb)");
         System.out.println("2. Ayam Bakar (30rb)");
@@ -77,7 +82,8 @@ public class Main {
     }
     
     // ===== METHOD 4: INPUT MINUMAN =====
-    static int[] inputMinuman() {
+    static int[] inputMinuman() 
+    {
         System.out.println("\n[ MINUMAN ]");
         System.out.println("5. Es Teh (5rb)");
         System.out.println("6. Jus Jeruk (12rb)");
@@ -102,7 +108,8 @@ public class Main {
     }
     
     // ===== METHOD 5: HITUNG TOTAL MAKANAN =====
-    static double hitungTotalMakanan(int[] makanan) {
+    static double hitungTotalMakanan(int[] makanan) 
+    {
         int makananKe1 = makanan[0];
         int jumlahMakananke1 = makanan[1];
         int makananKe2 = makanan[2];
@@ -116,7 +123,8 @@ public class Main {
     }
     
     // ===== METHOD 6: CEK PROMO MAKANAN =====
-    static boolean cekPromoMakanan(double totalMakanan) {
+    static boolean cekPromoMakanan(double totalMakanan) 
+    {
         if (totalMakanan > 50000) {
             System.out.println("\n>>> SELAMAT! Karena belanja makanan > 50rb, Anda dapat Promo Beli 1 Gratis 1 Minuman! <<<");
             return true;
@@ -126,7 +134,8 @@ public class Main {
     
     // ===== METHOD 7: HITUNG DISKON =====
     
-    static double[] hitungDiskonPromo(int[] minuman, boolean dptPromo) {
+    static double[] hitungDiskonPromo(int[] minuman, boolean dptPromo) 
+    {
         int minumanKe1 = minuman[0];
         int jumlahMinumanke1 = minuman[1];
         int minumanKe2 = minuman[2];
@@ -145,8 +154,8 @@ public class Main {
         return new double[]{diskonPromo1, diskonPromo2};
     }
 
-    static double[] hitungDiskonKhusus(int[] makanan, int[] minuman, 
-                                   double diskonPromo1, double diskonPromo2) {
+    static double[] hitungDiskonKhusus(int[] makanan, int[] minuman, double diskonPromo1, double diskonPromo2) 
+    {
         // Pakai total dasar yang sudah dikurangi B1G1
         double totalDasarSetelahB1G1 = hitungTotalDasar(makanan, minuman, 
                                                         diskonPromo1, diskonPromo2);
@@ -161,8 +170,8 @@ public class Main {
     }
     
     // ===== METHOD 8: HITUNG TOTAL DASAR =====
-    static double hitungTotalDasar(int[] makanan, int[] minuman, 
-                               double diskonPromo1, double diskonPromo2) {
+    static double hitungTotalDasar(int[] makanan, int[] minuman, double diskonPromo1, double diskonPromo2) 
+    {
         
         int makananKe1 = makanan[0];
         int jumlahMakananke1 = makanan[1];
@@ -177,7 +186,7 @@ public class Main {
         if (makananKe2 != -1) total += (menu[makananKe2].harga * jumlahMakananke2);
         total += (menu[minumanKe1].harga * jumlahMinumanke1);
         if (minumanKe2 != -1) total += (menu[minumanKe2].harga * jumlahMinumanke2);
-        // ✅ KURANGI B1G1 LANGSUNG!
+        
         total -= (diskonPromo1 + diskonPromo2);
         
         return total;  // Total dasar = Makanan + Minuman - B1G1
@@ -192,30 +201,32 @@ public class Main {
     }
     
     // ===== METHOD 10: TAMPILKAN STRUK =====
-    static void tampilkanStruk(int[] makanan, int[] minuman, double dp1, double dp2, double dk, double td, double ta) {
-        int m1 = makanan[0], jm1 = makanan[1], m2 = makanan[2], jm2 = makanan[3];
-        int n1 = minuman[0], jn1 = minuman[1], n2 = minuman[2], jn2 = minuman[3];
+    static void tampilkanStruk(int[] makanan, int[] minuman, double diskonPromo1, double diskonPromo2, double diskonKhusus, double totalDasar, double totalAkhir) 
+    {
+        int makananKe1 = makanan[0], jumlahMakananke1 = makanan[1], makananKe2 = makanan[2], jumlahMakananke2 = makanan[3];
+        int minumanKe1 = minuman[0], jumlahMinumanke1 = minuman[1], minumanKe2 = minuman[2], jumlahMinumanke2 = minuman[3];
         
         System.out.println("\n========== STRUK PEMBAYARAN ==========");
-        System.out.println(menu[m1].nama + " x" + jm1 + " : " + (menu[m1].harga * jm1));
-        if (m2 != -1) System.out.println(menu[m2].nama + " x" + jm2 + " : " + (menu[m2].harga * jm2));
+        System.out.println(menu[makananKe1].nama + " x" + jumlahMakananke1 + " : Rp " + (menu[makananKe1].harga * jumlahMakananke1));
+        if (makananKe2 != -1) System.out.println(menu[makananKe2].nama + " x" + jumlahMakananke2 + " : Rp " + (menu[makananKe2].harga * jumlahMakananke2));
         
-        System.out.println(menu[n1].nama + " x" + jn1 + " : " + (menu[n1].harga * jn1));
-        if (dp1 > 0) System.out.println("  > Promo B1G1 : -Rp" + dp1);
+        System.out.println(menu[minumanKe1].nama + " x" + jumlahMinumanke1 + " : Rp " + (menu[minumanKe1].harga * jumlahMinumanke1));
+        if (diskonPromo1 > 0) System.out.println("  > Promo B1G1  : -Rp " + diskonPromo1);
         
-        if (n2 != -1) {
-            System.out.println(menu[n2].nama + " x" + jn2 + " : " + (menu[n2].harga * jn2));
-            if (dp2 > 0) System.out.println("  > Promo B1G1 : -Rp" + dp2);
+        if (minumanKe2 != -1) {
+            System.out.println(menu[minumanKe2].nama + " x" + jumlahMinumanke2 + " : Rp " + (menu[minumanKe2].harga * jumlahMinumanke2));
+            if (diskonPromo2 > 0) System.out.println("  > Promo B1G1  : -Rp " + diskonPromo2);
         }
         
         System.out.println("--------------------------------------");
-        System.out.println("Subtotal        : Rp" + td);
-        if (dk > 0) System.out.println("Diskon 10%      : -Rp" + dk);
+        System.out.println("Subtotal        : Rp " + totalDasar);
+        if (diskonKhusus > 0) System.out.println("Diskon 10%      : -Rp " + diskonKhusus);
         
-        double pajak = (td - dk) * 0.10;
-        System.out.println("Pajak 10%       : Rp" + pajak);
-        System.out.println("Pelayanan       : Rp20000");
-        System.out.println("TOTAL BAYAR     : Rp" + ta);
+        double pajak = (totalDasar - diskonKhusus) * 0.10;
+        System.out.println("Pajak 10%       : Rp " + pajak);
+        System.out.println("Pelayanan       : Rp 20000");
+        System.out.println("--------------------------------------");
+        System.out.println("TOTAL BAYAR     : Rp " + totalAkhir);
         System.out.println("======================================");
     }
 }

@@ -1,10 +1,10 @@
 public class Menu {
-    // Atribut (Identifier harus deskriptif)
+    // penyiapan variabel
     String nama;
     double harga;
     String kategori;
 
-    // Constructor untuk inisialisasi object
+    // variabel disusun dalam bentuk konstruktor
     public Menu(String nama, double harga, String kategori) {
         this.nama = nama;
         this.harga = harga;
